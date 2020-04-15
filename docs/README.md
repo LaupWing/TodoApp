@@ -15,4 +15,6 @@ In this repository you can find diffrent versions of a simple ToDo webapp. With 
     * Object oriented Php
     * Php Laravel (not guarenteed)
 
-Of course are there more options to write a web app within a certain framework or language. 
+Of course are there more options to write a web app within a certain framework or language. As you can see above I will also try to cover as much ground as possible.
+
+## Todo App itself
