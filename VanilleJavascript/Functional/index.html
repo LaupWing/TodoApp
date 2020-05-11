@@ -26,7 +26,7 @@
         <main class="home">
             <h1>TodoList</h1>
             <form>
-                <input placeholder="What do you want to add" type="text">
+                <input name="todo" placeholder="What do you want to add" type="text">
                 <button type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 459.325 459.325">
                         <path d="M459.319,229.668c0,22.201-17.992,40.193-40.205,40.193H269.85v149.271c0,22.207-17.998,40.199-40.196,40.193
@@ -37,9 +37,17 @@
                 </svg>
                 </button>
             </form>
+            <p class="error"></p>
+            <div class="todos"></div>
         </main>
     </template>    
+    <template id="todo">
+        <div class="todo">
+            
+        </div>
+    </template>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
     <script src="./scripts/app.js" type="module"></script>
