@@ -19,9 +19,14 @@ a{
 }
 
 main{
-    margin-top: 30vh;
     display: flex;
     flex-direction: column;
+}
+main.login{
+    margin-top: 30vh;
+}
+main.home{
+    margin-top: 15vh;
 }
 
 hr{
@@ -32,19 +37,33 @@ hr{
 h1{
     color: white;
     margin-bottom: 30px;
+    text-align: center;
 }
 input,
 button{
     outline: none;
+    border: none;
+}
+input::placeholder{
+    color: rgba(0,0,0,.5)!important;
+}
+button{
+    cursor: pointer;
 }
 
-form{
-    margin-top: 10px;
+.input form{
     display: flex;
     flex-direction: column;
 }
+.home form{
+    display: flex;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+    width: 400px;
+}
 
-input{
+.login input{
     border: none;
     padding: 10px;
     width: 250px;
@@ -53,18 +72,37 @@ input{
     background: transparent;
     border: solid 2px white;
 }
+.home input{
+    flex: 1;
+    font-size: 1.2em;
+    padding-left: 5px;
+}
 input::placeholder{
     color: white;
     opacity: .5;
 }
 
-button{
+.login button{
     background: white;
     border: none;
     padding: 5px;
     margin-top: 10px;
 }
-
+.home button{
+    border-radius: 5px;
+    width: 3em;
+    background-color: #E48E71;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home button svg{
+    width: 2em;
+}
+.home button svg path{
+    fill: white;
+}
 /* Change the white to any color ;) */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
