@@ -9,7 +9,6 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     background-image: linear-gradient(to right, red , yellow);
@@ -17,16 +16,10 @@ body{
 
 a{
     text-decoration: none;
-    border-radius: 5px;
-    font-family: 'Roboto';
-    padding: 10px;
-    display: flex;
-    width: 240px;
-    margin: 10px 0;
-    color: white;
 }
 
 main{
+    margin-top: 30vh;
     display: flex;
     flex-direction: column;
 }
@@ -40,6 +33,10 @@ h1{
     color: white;
     margin-bottom: 30px;
 }
+input,
+button{
+    outline: none;
+}
 
 form{
     margin-top: 10px;
@@ -50,6 +47,7 @@ form{
 input{
     border: none;
     padding: 10px;
+    width: 250px;
     margin-bottom: 10px;
     border-radius: 5px;
     background: transparent;
