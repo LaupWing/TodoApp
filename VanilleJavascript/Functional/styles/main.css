@@ -64,3 +64,22 @@ button{
     padding: 5px;
     margin-top: 10px;
 }
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.error{
+    font-size: .6em;
+    text-align: right;
+    margin-top: 10px;
+    color: rgba(0,0,0,.5);
+    max-width: 200px;
+    align-self: flex-end;
+    word-break: break-word;
+}
