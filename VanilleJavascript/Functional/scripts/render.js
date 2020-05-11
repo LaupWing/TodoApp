@@ -1,4 +1,4 @@
-export default (template)=>{
-    const template = document.getElementById('login');
+export default (tmp)=>{
+    const template = document.getElementById(tmp);
     document.body.innerHTML = template.innerHTML;
 }

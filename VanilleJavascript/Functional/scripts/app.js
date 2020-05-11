@@ -1,17 +1,12 @@
 import './db.js'
+import render from './render.js';
+import submitLogin from './login/submitLogin.js';
 
 firebase.auth().onAuthStateChanged(user=>{
     if(!user){
-        renderLogin();
+        render('login');
+        submitLogin();
     }else{
-        renderHome();
+        render('home');
     }
 });
-
-function renderLogin(){
-    const template = document.getElementById('login');
-    document.body.innerHTML = template.innerHTML;
-}
-function renderHome(){
-    console.log('Render Home');
-}
