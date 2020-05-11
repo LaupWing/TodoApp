@@ -5,10 +5,10 @@ In this repository you can find diffrent versions of a simple ToDo webapp. With 
     * Functional Way
     * Object Oriented Way
 *   React
-    * Normal React
+    * Base React
     * Redux
 *   Vue
-    * Normal Vue
+    * Base Vue
     * Vuex
 *   Php
     * Normal Php
