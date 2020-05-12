@@ -1,8 +1,7 @@
 import './db.js'
 import render from './render.js';
-import submitLogin from './login/submitLoginHandler.js';
+import submitLoginHandler from './login/submitLoginHandler.js';
 import todoSubmitHandler from './home/todoSubmitHandler.js';
-import loginErrorHandler from './errorhandler.js';
 import pageContentCheck from './pageContentCheck.js'
 
 firebase.auth().onAuthStateChanged(user=>{
@@ -10,7 +9,7 @@ firebase.auth().onAuthStateChanged(user=>{
 
     if(!user){
         render('login');
-        submitLogin(loginErrorHandler);
+        submitLoginHandler();
     }else{
         render('home');
         todoSubmitHandler();
