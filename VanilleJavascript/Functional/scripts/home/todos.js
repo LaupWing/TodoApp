@@ -18,7 +18,7 @@ export async function fetchTodos(){
 function renderTodos(){
     const container = document.querySelector('.todos');
     const todo = document.getElementById('todo');
-    console.log(todo)
+    console.dir(document)
     todos.forEach(td=>{
         container.insertAdjacentHTML('beforeend', todo.innerHTML);
     })
