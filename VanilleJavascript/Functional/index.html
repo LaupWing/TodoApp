@@ -28,7 +28,7 @@
     <template id="home">
         <main class="home">
             <h1>TodoList</h1>
-            <form>
+            <form class="add">
                 <input name="todo" placeholder="What do you want to add" type="text">
                 <button type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 459.325 459.325">
@@ -45,13 +45,13 @@
         </main>
     </template>    
     <template id="todo">
-        <div class="todo">
+        <form class="todo">
             <h2></h2>
-            <div>
+            <div class="buttons">
                 <button>del</button>
                 <button>done</button>
             </div>
-        </div>
+        </form>
     </template>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
