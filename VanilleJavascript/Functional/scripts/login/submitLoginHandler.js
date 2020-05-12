@@ -5,6 +5,6 @@ export default async ()=>{
         e.preventDefault();
         const email = e.target.email.value; 
         const password = e.target.password.value;
-        logginIn(email, password)
+        logginIn(email, password);
     });
 }
