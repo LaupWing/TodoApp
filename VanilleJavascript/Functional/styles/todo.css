@@ -1,0 +1,10 @@
+.home form.todo{
+    background: white;
+}
+.home form.todo img{
+    width: 1.5em;
+}
+
+.home .todo .buttons{
+    display: flex;
+}
