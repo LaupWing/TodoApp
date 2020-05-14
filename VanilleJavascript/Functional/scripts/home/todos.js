@@ -16,6 +16,18 @@ function renderTodos(){
             .querySelector('h2')
             .textContent = td;
     })
+    applyEvents();
+}
+
+function applyEvents(){
+    document.querySelectorAll('.todo').forEach(td=>{
+        td.addEventListener('submit', e=>{
+            e.preventDefault();
+            if(document.activeElement.classList.contains('done')){
+                e.target.classList.add('finished');
+            }
+        });
+    });
 }
 
 export function dataWatcher(){
