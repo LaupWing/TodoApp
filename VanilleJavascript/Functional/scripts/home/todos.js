@@ -20,6 +20,9 @@ function renderTodos(){
     const todo = document.getElementById('todo');
     todos.forEach(td=>{
         container.insertAdjacentHTML('beforeend', todo.innerHTML);
-        console.log(td)
+        document
+            .querySelector('.todo:last-of-type')
+            .querySelector('h2')
+            .textContent = td;
     })
 }
