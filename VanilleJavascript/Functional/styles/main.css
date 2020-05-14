@@ -1,3 +1,9 @@
+:root{
+    --lightRed: #E48E71;
+    --red:#FF7944;
+    --green:#3FB847;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -94,7 +100,7 @@ input::placeholder{
 .home form.add button{
     border-radius: 5px;
     width: 3em;
-    background-color: #E48E71;
+    background-color: var(--lightRed);
     height: 3em;
     display: flex;
     justify-content: center;
@@ -103,7 +109,7 @@ input::placeholder{
 .home form.todo button{
     
 }
-.home button svg{
+.home button img{
     width: 2em;
 }
 .home button svg path{
