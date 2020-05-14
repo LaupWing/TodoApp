@@ -1,10 +1,24 @@
 .home form.todo{
     background: white;
+    display: flex;
+    margin: 15px 0;
 }
 .home form.todo img{
-    width: 1.5em;
+    width: 1.8em;
 }
 
-.home .todo .buttons{
+.home form.todo .buttons{
     display: flex;
+}
+.home form.todo h2{
+    flex: 1;
+}
+.home form.todo button{
+    padding: 5px 8px;
+}
+.home form.todo .done{
+    background: var(--green);
+}
+.home form.todo .delete{
+    background: var(--red);
 }
