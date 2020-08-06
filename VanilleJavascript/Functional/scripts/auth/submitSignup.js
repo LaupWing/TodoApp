@@ -5,7 +5,10 @@ export default async ()=>{
         e.preventDefault();
         const email = e.target.email.value; 
         const password = e.target.password.value;
-        console.log(email, password)
+        const confirm_password = e.target.password_confirm.value;
+        if(confirm_password !== password){
+            return alert('Passwords doesnt match');
+        }
         createUser(email, password);
     });
 }
