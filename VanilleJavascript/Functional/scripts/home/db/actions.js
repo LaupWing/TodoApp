@@ -29,3 +29,15 @@ export function dataWatcher(){
         }
     });
 }
+
+export function toggleChecked(todo){
+    const updatedTodos = todos.map(x=>{
+        if(x.todo === todo){
+            x.done = !x.done;
+        }
+        return x;
+    });
+    userCollection().set({
+        todos: updatedTodos
+    });
+}
