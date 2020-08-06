@@ -1,5 +1,5 @@
 import {removeChildNodes} from '../helpers/utils.js';
-import {toggleChecked} from './db/actions.js';
+import {toggleChecked, removeTodo} from './db/actions.js';
 
 export default function renderTodos(todos){
     const container = document.querySelector('.todos');
@@ -23,10 +23,11 @@ function applyEvents(){
     document.querySelectorAll('.todo').forEach(td=>{
         td.addEventListener('submit', e=>{
             e.preventDefault();
+            const todo = e.target.querySelector('h2').textContent.trim();
             if(document.activeElement.classList.contains('done')){
-                toggleChecked(e.target.querySelector('h2').textContent.trim());
+                toggleChecked(todo);
             }else{
-                
+                removeTodo(todo);
             }
         });
     });
