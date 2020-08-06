@@ -1,9 +1,8 @@
-import userCollection from './userCollection.js';
 import {removeChildNodes} from '../helpers/utils.js';
 
 export let todos = []
 
-function renderTodos(){
+export default function renderTodos(){
     const container = document.querySelector('.todos');
     const todo = document.getElementById('todo');
     
@@ -27,14 +26,5 @@ function applyEvents(){
                 e.target.classList.add('finished');
             }
         });
-    });
-}
-
-export function dataWatcher(){
-    userCollection().onSnapshot(snap=>{
-        if(snap.exists){
-            todos = snap.data().todos;
-            renderTodos();
-        }
     });
 }

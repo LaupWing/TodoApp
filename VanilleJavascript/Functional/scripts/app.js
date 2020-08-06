@@ -2,7 +2,7 @@ import './db/db.js'
 import render from './render/render.js';
 import submitLoginHandler from './auth/submitLoginHandler.js';
 import todoSubmitHandler from './home/todoSubmitHandler.js';
-import {dataWatcher} from './home/todos.js';
+import {dataWatcher} from './home/store/store.js';
 import logoutHandler from './auth/logoutHandler.js';
 
 firebase.auth().onAuthStateChanged(user=>{

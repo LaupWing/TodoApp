@@ -1,4 +1,4 @@
-import addTodo from './addTodo.js';
+import {addTodo} from './store/store.js';
 
 export default ()=>{
     document.querySelector('form').addEventListener('submit',async (e)=>{
