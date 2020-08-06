@@ -1,9 +1,9 @@
 import './db/db.js'
 import render from './render/render.js';
-import submitLoginHandler from './auth/submitLoginHandler.js';
+import submitLoginHandler from './auth_handlers/submitLoginHandler.js';
 import {addTodoSubmitHandler} from './home/submitHandlers.js';
 import {dataWatcher} from './home/db/actions.js';
-import logoutHandler from './auth/logoutHandler.js';
+import logoutHandler from './auth_handlers/logoutHandler.js';
 
 firebase.auth().onAuthStateChanged(user=>{
     if(!user){
