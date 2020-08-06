@@ -1,5 +1,6 @@
 @import url('./add.css');
 @import url('./todo.css');
+@import url('./login.css');
 
 :root{
     --lightRed: #E48E71;
@@ -31,9 +32,7 @@ main{
     display: flex;
     flex-direction: column;
 }
-main.login{
-    margin-top: 30vh;
-}
+
 main.home{
     margin-top: 15vh;
 }
@@ -84,12 +83,7 @@ input::placeholder{
     opacity: .5;
 }
 
-.login button{
-    background: white;
-    border: none;
-    padding: 5px;
-    margin-top: 10px;
-}
+
 
 /* Change the white to any color ;) */
 input:-webkit-autofill,

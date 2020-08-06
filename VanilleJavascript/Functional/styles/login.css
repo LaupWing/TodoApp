@@ -1,0 +1,21 @@
+main.login{
+    margin-top: 30vh;
+}
+main.login form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main.login form input{
+    margin: 15px 0;
+}
+.login button{
+    margin-top: 30px;
+    background: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
