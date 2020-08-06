@@ -1,6 +1,6 @@
 @import url('./add.css');
 @import url('./todo.css');
-@import url('./login.css');
+@import url('./auth.css');
 
 :root{
     --lightRed: #E48E71;

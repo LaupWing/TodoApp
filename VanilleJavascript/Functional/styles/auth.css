@@ -19,3 +19,28 @@ main.login form input{
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+.form-container{
+    position: relative;
+    width: 250px;
+}
+
+.login_form, .signup_form{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.login_form.hidden, .signup_form.hidden{
+    opacity: 0;
+    z-index: -1;
+}
+
+.login a{
+    text-align: right;
+    margin-top: 20px;
+    font-style: italic;
+    font-size: .8rem;
+    cursor: pointer;
+    width: 100%;
+}
