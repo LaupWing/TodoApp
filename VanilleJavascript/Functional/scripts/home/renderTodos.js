@@ -7,10 +7,13 @@ export default function renderTodos(todos){
     
     todos.forEach(td=>{
         container.insertAdjacentHTML('beforeend', todo.innerHTML);
+        td.done && document
+            .querySelector('.todo:last-of-type')
+            .classList.add('done')
         document
             .querySelector('.todo:last-of-type')
             .querySelector('h2')
-            .textContent = td;
+            .textContent = td.todo;
     })
     applyEvents();
 }

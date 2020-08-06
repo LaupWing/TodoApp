@@ -1,4 +1,5 @@
 import renderTodos from '../renderTodos.js';
+let todos = [];
 
 const userCollection =  ()=>{
     const db = firebase.firestore().collection('todos'); 
@@ -7,7 +8,10 @@ const userCollection =  ()=>{
 }
 
 export const addTodo = (todo)=>{
-    const updatedTodos = [...todos, todo];
+    const updatedTodos = [...todos, {
+        done: false,
+        todo
+    }];
     try{
         userCollection().set({
             todos: updatedTodos
@@ -20,7 +24,7 @@ export const addTodo = (todo)=>{
 export function dataWatcher(){
     userCollection().onSnapshot(snap=>{
         if(snap.exists){
-            const todos = snap.data().todos;
+            todos = snap.data().todos;
             renderTodos(todos);
         }
     });
