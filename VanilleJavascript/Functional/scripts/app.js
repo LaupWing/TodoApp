@@ -9,6 +9,7 @@ firebase.auth().onAuthStateChanged(user=>{
         render('login');
         submitLoginHandler();
     }else{
+        console.log(user)
         render('home');
         todoSubmitHandler();
         dataWatcher();
