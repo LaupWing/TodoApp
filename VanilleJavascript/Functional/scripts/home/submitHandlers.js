@@ -1,6 +1,6 @@
 import {addTodo} from './db/actions.js';
 
-export default ()=>{
+export const addTodoSubmitHandler =  ()=>{
     document.querySelector('form').addEventListener('submit',async (e)=>{
         e.preventDefault();
         const todo = e.target.todo.value;
