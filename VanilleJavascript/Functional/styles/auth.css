@@ -29,6 +29,7 @@ main.login form input{
     position: absolute;
     top: 0;
     left: 0;
+    transition: opacity 1s;
 }
 
 .login_form.hidden, .signup_form.hidden{
