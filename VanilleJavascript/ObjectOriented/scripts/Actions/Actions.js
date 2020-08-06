@@ -8,4 +8,8 @@ export default class Actions{
                 error.textContent = err.message;
             });
     }
+    static loginUser(email, password){
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .catch(e=>errorHandler(e.message));
+    }
 }
