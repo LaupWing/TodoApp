@@ -1,5 +1,4 @@
 export default (email, password) =>{
-    console.log(email, password)
     firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)

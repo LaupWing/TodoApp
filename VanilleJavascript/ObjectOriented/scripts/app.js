@@ -5,7 +5,7 @@ firebase.auth().onAuthStateChanged(user=>{
     if(!user){
         new Auth();
     }else{
-
+        
     }
 });
-firebase.auth().signOut()
+firebase.auth().signOut();
