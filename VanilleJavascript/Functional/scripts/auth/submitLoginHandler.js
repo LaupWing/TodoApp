@@ -1,4 +1,4 @@
-import logginIn from './logginIn.js';
+import logginIn from './loginHandler.js';
 
 export default async ()=>{
     document.querySelector('form').addEventListener('submit',(e)=>{
