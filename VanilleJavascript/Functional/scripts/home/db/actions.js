@@ -21,7 +21,6 @@ export function dataWatcher(){
     userCollection().onSnapshot(snap=>{
         if(snap.exists){
             const todos = snap.data().todos;
-            console.log(todos)
             renderTodos(todos);
         }
     });
