@@ -1,5 +1,5 @@
-import './db.js'
-import render from './render.js';
+import './db/db.js'
+import render from './render/render.js';
 import submitLoginHandler from './auth/submitLoginHandler.js';
 import todoSubmitHandler from './home/todoSubmitHandler.js';
 import {dataWatcher} from './home/todos.js';

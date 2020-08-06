@@ -1,5 +1,5 @@
 import userCollection from './userCollection.js';
-import {removeChildNodes} from '../utils.js';
+import {removeChildNodes} from '../helpers/utils.js';
 
 export let todos = []
 

@@ -1,4 +1,4 @@
-import errorHandler from '../errorhandler.js';
+import errorHandler from '../error/errorhandler.js';
 
 export default (email, password)=>{
     firebase.auth().signInWithEmailAndPassword(email, password)
