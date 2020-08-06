@@ -1,4 +1,3 @@
-import {todos} from '../renderTodos.js';
 import renderTodos from '../renderTodos.js';
 
 const userCollection =  ()=>{
@@ -21,8 +20,9 @@ export const addTodo = (todo)=>{
 export function dataWatcher(){
     userCollection().onSnapshot(snap=>{
         if(snap.exists){
-            todos = snap.data().todos;
-            renderTodos();
+            const todos = snap.data().todos;
+            console.log(todos)
+            renderTodos(todos);
         }
     });
 }

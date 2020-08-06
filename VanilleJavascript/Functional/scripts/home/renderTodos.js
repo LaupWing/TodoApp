@@ -1,11 +1,8 @@
 import {removeChildNodes} from '../helpers/utils.js';
 
-export let todos = []
-
-export default function renderTodos(){
+export default function renderTodos(todos){
     const container = document.querySelector('.todos');
     const todo = document.getElementById('todo');
-    
     removeChildNodes(container);
     
     todos.forEach(td=>{
