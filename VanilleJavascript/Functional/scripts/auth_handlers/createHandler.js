@@ -1,9 +1,10 @@
 export default (email, password) =>{
+    console.log(email, password)
     firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .catch(function(error) {
+        .catch(function(err) {
             const error = document.querySelector('p.error');
-            error.textContent = error.message;
+            error.textContent = err.message;
         });
 }
