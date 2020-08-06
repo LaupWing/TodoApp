@@ -42,7 +42,7 @@ export function toggleChecked(todo){
     });
 }
 export function removeTodo(todo){
-    const updatedTodos = todos.filter(x=>x!==todo);
+    const updatedTodos = todos.filter(x=>x.todo!==todo);
     userCollection().set({
         todos: updatedTodos
     });
