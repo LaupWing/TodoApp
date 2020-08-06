@@ -1,5 +1,5 @@
-import {todos} from '../todos.js';
-import renderTodos from '../todos.js';
+import {todos} from '../renderTodos.js';
+import renderTodos from '../renderTodos.js';
 
 const userCollection =  ()=>{
     const db = firebase.firestore().collection('todos'); 
