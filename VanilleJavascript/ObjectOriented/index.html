@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Functional</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+    <div id="app">
+        
+    </div>
+    <template id="login">
+        <main class="login">
+            <h1>Welcome</h1>
+            <div class="form-container">
+                <form class="login_form">
+                    <input name='email' type="text" placeholder="Your Email...">
+                    <input name='password' type="password" placeholder="Your Password...">
+                    <p class="error"></p>
+                    <button type="submit">Submit</button>
+                    <a href="#">No account? Sign up here!</a>
+                </form>
+                <form class="signup_form hidden">
+                    <input name='email' type="text" placeholder="Your Email...">
+                    <input name='password' type="password" placeholder="Your Password...">
+                    <input name='password_confirm' type="password" placeholder="Confirm your Password...">
+                    <p class="error"></p>
+                    <button type="submit">Submit</button>
+                    <a href="#">Already hava account? Login here!</a>
+                </form>
+            </div>
+        </main>
+    </template>    
+    <template id="home">
+        <a class="logout" href="#">Logout</a>
+        <main class="home">
+            <h1>TodoList</h1>
+            <form class="add" autocomplete="off">
+                <input name="todo" placeholder="What do you want to add" type="text">
+                <button type="submit">
+                    <img src="./assets/plus.svg" alt="">
+                </button>
+            </form>
+            <p class="error"></p>
+            <div class="todos"></div>
+        </main>
+    </template>    
+    <template id="todo">
+        <form class="todo">
+            <h2></h2>
+            <div class="buttons">
+                <button type="submit" class="done"><img src="./assets/done.svg" alt=""></button>
+                <button type="submit" class="delete"><img src="./assets/delete.svg" alt=""></button>
+            </div>
+        </form>
+    </template>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <script src="./scripts/app.js" type="module"></script>
 </body>
+
 </html>
