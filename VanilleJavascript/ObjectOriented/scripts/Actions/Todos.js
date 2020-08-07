@@ -1,20 +1,20 @@
 export default class Todos{
-    constructor(renderTodos){
-        this.todos =[];
-        this.renderTodos = renderTodos;
-        this.userCollection().onSnapshot(snap=>{
-            if(snap.exists){
-                this.todos = snap.data().todos;
-                this.renderTodos(this.todos);
-            }
-        });
-    }
-    userCollection = ()=>{
+    // constructor(renderTodos){
+    //     this.todos =[];
+    //     this.renderTodos = renderTodos;
+    //     this.userCollection().onSnapshot(snap=>{
+    //         if(snap.exists){
+    //             this.todos = snap.data().todos;
+    //             this.renderTodos(this.todos);
+    //         }
+    //     });
+    // }
+    static userCollection = ()=>{
         const db = firebase.firestore().collection('todos'); 
         const id = firebase.auth().currentUser.uid;
         return db.doc(id);
     }
-    addTodo(todo){
+    static addTodo(todo){
         const updatedTodos = [...this.todos, {
             done: false,
             todo
@@ -27,7 +27,7 @@ export default class Todos{
             console.log(e);
         }
     }
-    toggleChecked(todo){
+    static toggleChecked(todo){
         const updatedTodos = this.todos.map(x=>{
             if(x.todo === todo){
                 x.done = !x.done;
@@ -38,7 +38,7 @@ export default class Todos{
             todos: updatedTodos
         });
     }
-    removeTodo(todo){
+    static removeTodo(todo){
         const updatedTodos = this.todos.filter(x=>x.todo!==todo);
         this.userCollection().set({
             todos: updatedTodos

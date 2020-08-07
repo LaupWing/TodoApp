@@ -7,7 +7,13 @@ export default class Home{
     constructor(){
         this.template = document.querySelector('#home');
         this.render();
-        this.Todos = new Todos(this.renderTodos.bind(this));
+        this.todos = [];
+        Todos.userCollection().onSnapshot(snap=>{
+            if(snap.exists){
+                this.todos = snap.data().todos;
+                this.renderTodos(this.todos);
+            }
+        });
     }
     applyEvents(){
         const form = document.querySelector('form');
