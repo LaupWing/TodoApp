@@ -30,6 +30,21 @@ export default class Actions{
             console.log(e);
         }
     }
+    static toggleChecked(todo){
+        const updatedTodos = todos.map(x=>{
+            if(x.todo === todo){
+                x.done = !x.done;
+            }
+            return x;
+        });
+        userCollection().set({
+            todos: updatedTodos
+        });
+    }
+    static removeTodo(todo){
+        const updatedTodos = todos.filter(x=>x.todo!==todo);
+        userCollection().set({
+            todos: updatedTodos
+        });
+    }
 }
-
-
