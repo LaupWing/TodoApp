@@ -1,4 +1,4 @@
-import Actions from '../Actions/Actions.js';
+import Actions from '../Actions/User.js';
 import Utils from '../Utils/Utils.js';
 import Todo from './Todo/Todo.js';
 
@@ -6,7 +6,7 @@ export default class Home{
     constructor(){
         this.template = document.querySelector('#home');
         this.render();
-        userCollection().onSnapshot(snap=>{
+        Actions.userCollection().onSnapshot(snap=>{
             if(snap.exists){
                 todos = snap.data().todos;
                 renderTodos(todos);

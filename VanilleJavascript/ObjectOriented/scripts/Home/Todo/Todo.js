@@ -1,4 +1,4 @@
-import Actions from '../../Actions/Actions.js'
+import Actions from '../../Actions/User.js'
 
 export default class Todo{
     constructor(todoObj){
