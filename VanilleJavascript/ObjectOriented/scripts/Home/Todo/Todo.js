@@ -1,19 +1,21 @@
+import Todos from '../../Actions/Todos.js';
+
 export default class Todo{
-    constructor(todoObj, todoActions){
+    constructor(todoObj, todos){
         this.container = document.querySelector('.todos');
         this.todo = document.getElementById('todo');
         this.todoObj = todoObj;
         this.render();
-        this.todoActions = todoActions;
+        this.todos = todos;
     }
     addEvent(td){
         td.addEventListener('submit', e=>{
             e.preventDefault();
             const todo = e.target.querySelector('h2').textContent.trim();
             if(document.activeElement.classList.contains('done')){
-                this.todoActions.toggleChecked(todo);
+                Todos.toggleChecked(todo, this.todos);
             }else{
-                this.todoActions.removeTodo(todo);
+                Todos.removeTodo(todo, this.todos);
             }
         });
     }

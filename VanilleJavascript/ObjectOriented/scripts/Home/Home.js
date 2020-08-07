@@ -36,7 +36,7 @@ export default class Home{
         const container = document.querySelector('.todos');
         Utils.removChilds(container);
         todos.forEach(todo=>{
-            new Todo(todo, this.Todos);
+            new Todo(todo, this.todos);
         });
     }
     render(){
