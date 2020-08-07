@@ -10,7 +10,16 @@ export default class Auth{
         links.forEach(link=>link.addEventListener('click', this.toggleForm));
         
         const signup_form = document.querySelector('form.signup_form');
-        signup_form.addEventListener('submit', this.signupUser)
+        signup_form.addEventListener('submit', this.signupUser);
+
+        const login_form = document.querySelector('form.login_form');
+        login_form.addEventListener('submit', this.loginUser)
+    }
+    loginUser(e){
+        e.preventDefault();
+        const email = e.target.email.value; 
+        const password = e.target.password.value;
+        Actions.loginUser(email, password);
     }
     signupUser(e){
         e.preventDefault();
