@@ -1,3 +1,5 @@
+import Actions from '../../Actions/Actions.js'
+
 class Todo{
     constructor(todoObj){
         this.container = document.querySelector('.todos');
@@ -10,9 +12,9 @@ class Todo{
             e.preventDefault();
             const todo = e.target.querySelector('h2').textContent.trim();
             if(document.activeElement.classList.contains('done')){
-                toggleChecked(todo);
+                Actions.toggleChecked(todo);
             }else{
-                removeTodo(todo);
+                Actions.removeTodo(todo);
             }
         });
     }
