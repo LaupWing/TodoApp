@@ -15,7 +15,7 @@ export default class Todos{
         return db.doc(id);
     }
     addTodo(todo){
-        const updatedTodos = [...todos, {
+        const updatedTodos = [...this.todos, {
             done: false,
             todo
         }];
@@ -28,7 +28,7 @@ export default class Todos{
         }
     }
     toggleChecked(todo){
-        const updatedTodos = todos.map(x=>{
+        const updatedTodos = this.todos.map(x=>{
             if(x.todo === todo){
                 x.done = !x.done;
             }
@@ -39,7 +39,7 @@ export default class Todos{
         });
     }
     removeTodo(todo){
-        const updatedTodos = todos.filter(x=>x.todo!==todo);
+        const updatedTodos = this.todos.filter(x=>x.todo!==todo);
         this.userCollection().set({
             todos: updatedTodos
         });
