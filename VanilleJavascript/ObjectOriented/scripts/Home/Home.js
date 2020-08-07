@@ -1,17 +1,13 @@
 import Actions from '../Actions/User.js';
 import Utils from '../Utils/Utils.js';
 import Todo from './Todo/Todo.js';
+import Todos from '../Actions/Todos.js';
 
 export default class Home{
     constructor(){
         this.template = document.querySelector('#home');
         this.render();
-        Actions.userCollection().onSnapshot(snap=>{
-            if(snap.exists){
-                todos = snap.data().todos;
-                renderTodos(todos);
-            }
-        });
+        this.Todos = new Todos(this.renderTodos);
     }
     applyEvents(){
         const form = document.querySelector('form');
