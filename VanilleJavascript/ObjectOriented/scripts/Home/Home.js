@@ -7,7 +7,7 @@ export default class Home{
     constructor(){
         this.template = document.querySelector('#home');
         this.render();
-        this.Todos = new Todos(this.renderTodos);
+        this.Todos = new Todos(this.renderTodos.bind(this));
     }
     applyEvents(){
         const form = document.querySelector('form');
@@ -30,7 +30,7 @@ export default class Home{
         const container = document.querySelector('.todos');
         Utils.removChilds(container);
         todos.forEach(todo=>{
-            new Todo(todo);
+            new Todo(todo, this.Todos);
         });
     }
     render(){

@@ -1,20 +1,19 @@
-import Actions from '../../Actions/User.js'
-
 export default class Todo{
-    constructor(todoObj){
+    constructor(todoObj, todoActions){
         this.container = document.querySelector('.todos');
         this.todo = document.getElementById('todo');
         this.todoObj = todoObj;
         this.render();
+        this.todoActions = todoActions;
     }
     addEvent(td){
         td.addEventListener('submit', e=>{
             e.preventDefault();
             const todo = e.target.querySelector('h2').textContent.trim();
             if(document.activeElement.classList.contains('done')){
-                Actions.toggleChecked(todo);
+                this.todoActions.toggleChecked(todo);
             }else{
-                Actions.removeTodo(todo);
+                this.todoActions.removeTodo(todo);
             }
         });
     }
@@ -24,8 +23,9 @@ export default class Todo{
             .querySelector('.todo:last-of-type')
             .classList.add('done')
         const todo =document.querySelector('.todo:last-of-type')
-        todo.querySelector('h2')
-        todo.textContent = this.todoObj.todo;
+        todo
+            .querySelector('h2')
+            .textContent = this.todoObj.todo;
         this.addEvent(todo);
     }
 }
