@@ -1,13 +1,13 @@
 import Actions from '../../Actions/Actions.js'
 
-class Todo{
+export default class Todo{
     constructor(todoObj){
         this.container = document.querySelector('.todos');
         this.todo = document.getElementById('todo');
         this.todoObj = todoObj;
         this.render();
     }
-    event(td){
+    addEvent(td){
         td.addEventListener('submit', e=>{
             e.preventDefault();
             const todo = e.target.querySelector('h2').textContent.trim();

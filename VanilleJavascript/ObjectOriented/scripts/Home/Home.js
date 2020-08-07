@@ -1,15 +1,21 @@
 import Actions from '../Actions/Actions.js';
+import Utils from '../Utils/Utils.js';
+import Todo from './Todo/Todo.js';
 
 export default class Home{
     constructor(){
         this.template = document.querySelector('#home');
         this.render();
+        userCollection().onSnapshot(snap=>{
+            if(snap.exists){
+                todos = snap.data().todos;
+                renderTodos(todos);
+            }
+        });
     }
     applyEvents(){
         const form = document.querySelector('form');
         form.addEventListener('submit', this.submitTodo);
-
-        
     }
     submitTodo(e){
         e.preventDefault();
@@ -21,8 +27,15 @@ export default class Home{
         if(exists){
             return alert('Todo already exists');
         }
-        // addTodo(todo); 
+        Actions.addTodo(todo); 
         e.target.todo.value = ''; 
+    }
+    renderTodos(todos){
+        const container = document.querySelector('.todos');
+        Utils.removChilds(container);
+        todos.forEach(todo=>{
+            new Todo(todo);
+        });
     }
     render(){
         document
