@@ -4,6 +4,8 @@
             v-for="(td, i) in todos"
             :key="i"
             :todo="td"
+            v-on:remove-todo="removeTodo"
+            v-on:toggle-check="toggleCheck"
         />
     </div>
 </template>
@@ -22,10 +24,33 @@ export default {
             todos:[]
         }
     },
+    methods: {
+        toggleCheck(todo){
+            const updatedTodos = this.todos.map(x=>{
+                if(x.todo === todo){
+                    x.done = !x.done;
+                }
+                return x;
+            })
+            this.userCollection().set({
+                todos: updatedTodos
+            })
+        },
+        removeTodo(todo){
+            const updatedTodos = this.todos.filter(x=>x.todo!==todo)
+            userCollection().set({
+                todos: updatedTodos
+            })
+        },
+        userCollection(){
+            const db = firebase.firestore().collection('todos')
+            const id = firebase.auth().currentUser.uid
+            
+            return db.doc(id)
+        }
+    },
     created(){
-        const db = firebase.firestore().collection('todos')
-        const id = firebase.auth().currentUser.uid
-        db.doc(id).onSnapshot(snap=>{
+        this.userCollection().onSnapshot(snap=>{
             if(snap.exists){
                 this.todos = snap.data().todos
             }

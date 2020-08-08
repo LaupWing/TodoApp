@@ -1,14 +1,16 @@
 <template>
-    <div class="todo">
+    <div class="todo" :class="todo.done && 'done'">
         <h2>{{todo.todo}}</h2>
         <div class="buttons">
             <button 
                 class="done"
+                @click="$emit('toggle-check', todo.todo)"
             >
                 <img :src="require('@/assets/done.svg')" alt="">
             </button>
             <button 
                 class="delete"
+                @click="$emit('remove-todo', todo.todo)"
             >
                 <img :src="require('@/assets/delete.svg')" alt="">
             </button>
