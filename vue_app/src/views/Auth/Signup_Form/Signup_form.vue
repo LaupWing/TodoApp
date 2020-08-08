@@ -1,41 +1,39 @@
 <template>
-    <form 
-        class="login_form"
-        @submit.prevent=""
-    >
-        <input  
+    <form class="signup_form">
+        <input 
+            v-model='email' 
             type="text" 
             placeholder="Your Email..."
-            v-model="email"
         >
         <input 
+            v-model='password' 
             type="password" 
             placeholder="Your Password..."
-            v-model="password"
         >
-        <p 
-            class="error"
-            v-if="error"
+        <input 
+            v-model='password_confirm' 
+            type="password" 
+            placeholder="Confirm your Password..."
         >
-            {{error}}
-        </p>
+        <p v-if="error" class="error">{{error}}</p>
         <button type="submit">Submit</button>
         <a 
             @click.prevent="$emit('toggle-auth')"
         >
-            No account? Sign up here!
+            Already hava account? Login here!
         </a>
     </form>
 </template>
 
 <script>
 export default {
-    name: 'Login_Form',
+    name:'Signup_Form',
     data(){
         return{
             email: '',
             password: '',
-            error: ''
+            password_confirm: '',
+            error: null
         }
     }
 }
