@@ -18,11 +18,8 @@ export default {
     },
     computed:{
         todos(){
-            return this.$store.getters.todos
+            return this.$store.getters.todos.todos
         }
-    },
-    created(){
-            
     }
 }
 </script>

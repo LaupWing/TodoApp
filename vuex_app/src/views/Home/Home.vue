@@ -16,6 +16,9 @@ export default {
     components:{
         'add-todo': AddTodo,
         'todos': Todos
+    },
+    created(){
+        this.$store.dispatch('todosWatcher')
     }
 }
 </script>
