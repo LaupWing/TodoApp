@@ -1,7 +1,7 @@
 <template>
     <form 
         class="login_form"
-        @submit.prevent=""
+        @submit.prevent="login"
     >
         <input  
             type="text" 
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
     name: 'Login_Form',
     data(){
@@ -36,6 +38,16 @@ export default {
             email: '',
             password: '',
             error: ''
+        }
+    },
+    methods:{
+        login(){
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(this.email, this.password)
+                .catch(e=>{
+                    this.error = e.message
+                })
         }
     }
 }
