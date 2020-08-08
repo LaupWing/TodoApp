@@ -4,8 +4,6 @@
             v-for="(td, i) in todos"
             :key="i"
             :todo="td"
-            v-on:remove-todo="removeTodo"
-            v-on:toggle-check="toggleCheck"
         />
     </div>
 </template>
@@ -18,11 +16,13 @@ export default {
     components:{
         todo: Todo
     },
-    methods: {
-        
+    computed:{
+        todos(){
+            return this.$store.getters.todos
+        }
     },
     created(){
-        
+            
     }
 }
 </script>

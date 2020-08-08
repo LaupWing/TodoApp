@@ -9,7 +9,17 @@ const mutations = {
     }
 }
 const actions ={
-    
+    todosWatcher({commit}){
+        const id = firebase.auth().currentUser.uid
+        firebase
+            .firestore()
+            .collection('todos')
+            .doc(id)
+            .onSnapshot(doc=>{
+                const todos = doc.data()
+                commit('SET_TODOS', todos)
+            })
+    }
 }
 const getters = {
     todos: state => state.todos
