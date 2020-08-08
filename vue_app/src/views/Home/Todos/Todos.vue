@@ -38,7 +38,7 @@ export default {
         },
         removeTodo(todo){
             const updatedTodos = this.todos.filter(x=>x.todo!==todo)
-            userCollection().set({
+            this.userCollection().set({
                 todos: updatedTodos
             })
         },
