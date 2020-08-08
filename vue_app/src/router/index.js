@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Todos from '../views/Todos/Todos.vue'
+import Home from '../views/Home/Home.vue'
 import Auth from '../views/Auth/Auth.vue'
 
 Vue.use(VueRouter);
@@ -8,8 +8,8 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: '/',
-        name: 'Todos',
-        component: Todos
+        name: 'Home',
+        component: Home
     },
     {
         path: '/auth',

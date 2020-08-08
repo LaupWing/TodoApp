@@ -12,8 +12,8 @@ export default {
     created(){
         firebase.auth().onAuthStateChanged(user=>{
             if(user){
-                this.$route.name !== 'Todos' && this.$router.push({
-                    name: 'Todos'
+                this.$route.name !== 'Home' && this.$router.push({
+                    name: 'Home'
                 })
             }else{
                 this.$route.name !== 'Auth' && this.$router.push({
