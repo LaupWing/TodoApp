@@ -1,5 +1,8 @@
 <template>
-    <form class="signup_form">
+    <form 
+        class="signup_form"
+        @submit.prevent="signup"
+    >
         <input 
             v-model='email' 
             type="text" 
@@ -26,6 +29,8 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
     name:'Signup_Form',
     data(){
@@ -34,6 +39,18 @@ export default {
             password: '',
             password_confirm: '',
             error: null
+        }
+    },
+    methods:{
+        signup(){
+            if(this.password !== this.password_confirm){
+                alert('Passwords doesnt match')
+                return
+            }
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(this.email, this.password)
+                .catch(e=>this.error = e.message)
         }
     }
 }
