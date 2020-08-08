@@ -1,6 +1,10 @@
 <template>
-    <form class="add" autocomplete="off">
-        <input name="todo" placeholder="What do you want to add" type="text">
+    <form @submit.prevent="handleSubmit" class="add" autocomplete="off">
+        <input 
+            v-model="todo" 
+            placeholder="What do you want to add" 
+            type="text"
+        >
         <button type="submit">
             <img :src="require('@/assets/plus.svg')" alt="">
         </button>
@@ -8,8 +12,42 @@
 </template>
 
 <script>
-export default {
+import firebase from 'firebase'
 
+export default {
+    name: 'AddTodo',
+    data(){
+        return{
+            todo: ''
+        }
+    },
+    methods:{
+        async handleSubmit(){
+            if(this.todo ===''){
+                alert('Todo is empty')
+                return
+            }
+            const ref = firebase
+                .firestore()
+                .collection('todos')
+                .doc(firebase.auth().currentUser.uid)
+            const doc = await ref.get()
+            const {todos} = doc.data()
+            if(todos.find(x=>x.todo===this.todo)){
+                alert('Todo already exists')
+                return
+            }
+            todos.push({
+                todo: this.todo,
+                done: false
+            })
+
+            ref.set({
+                todos
+            })
+            this.todo = ''
+        }
+    }
 }
 </script>
 
