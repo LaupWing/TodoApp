@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Todos from '../views/Todos.vue'
-import Auth from '../views/Auth.vue'
+import Todos from '../views/Todos/Todos.vue'
+import Auth from '../views/Auth/Auth.vue'
 
 Vue.use(VueRouter);
 
