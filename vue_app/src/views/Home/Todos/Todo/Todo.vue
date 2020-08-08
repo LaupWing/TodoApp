@@ -1,15 +1,19 @@
 <template>
-    <form class="todo">
+    <div class="todo">
         <h2>{{todo.todo}}</h2>
         <div class="buttons">
-            <button type="submit" class="done">
+            <button 
+                class="done"
+            >
                 <img :src="require('@/assets/done.svg')" alt="">
             </button>
-            <button type="submit" class="delete">
+            <button 
+                class="delete"
+            >
                 <img :src="require('@/assets/delete.svg')" alt="">
             </button>
         </div>
-    </form>
+    </div>
 </template>
 
 <script>
@@ -25,40 +29,40 @@ export default {
 </script>
 
 <style>
-form.todo{
+.todo{
     background: white;
     display: flex;
     margin: 15px 0;
     align-items: center;
 }
-form.todo img{
+.todo img{
     width: 1.8em;
     transition: transform .25s;
 }
 
-form.todo .buttons{
+.todo .buttons{
     display: flex;
 }
-form.todo h2{
+.todo h2{
     flex: 1;
     padding-left: 10px;
     font-weight: normal;
     font-size: 1em;
 }
-form.todo button{
+.todo button{
     padding: 5px 8px;
 }
-form.todo button:hover img{
+.todo button:hover img{
     transform: scale(.8);
 }
-form.todo .done{
+.todo .done{
     background: var(--green);
 }
-form.todo .delete{
+.todo .delete{
     background: var(--red);
 }
 
-form.todo.done{
+.todo.done{
     opacity: .5;
     text-decoration: line-through;
 }

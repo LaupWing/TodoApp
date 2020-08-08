@@ -23,11 +23,11 @@ export default {
         }
     },
     created(){
-        const db = firebase.firestore().collection('todos'); 
-        const id = firebase.auth().currentUser.uid;
+        const db = firebase.firestore().collection('todos')
+        const id = firebase.auth().currentUser.uid
         db.doc(id).onSnapshot(snap=>{
             if(snap.exists){
-                this.todos = snap.data().todos;
+                this.todos = snap.data().todos
             }
         })
     }
