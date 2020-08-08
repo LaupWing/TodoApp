@@ -5,8 +5,23 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
-    name: 'App'
+    name: 'App',
+    created(){
+        firebase.auth().onAuthStateChanged(user=>{
+            if(user){
+                this.$route.name !== 'Todos' && this.$router.push({
+                    name: 'Todos'
+                })
+            }else{
+                this.$route.name !== 'Auth' && this.$router.push({
+                    name:'Auth'
+                })
+            }
+        })
+    }
 }
 </script>
 <style>
