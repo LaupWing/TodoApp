@@ -24,11 +24,9 @@ const actions ={
         ref
             .doc(id)
             .onSnapshot(doc=>{
-                const todos = doc.data()
-                if(todos){
+                if(doc.exists){
+                    const todos = doc.data()
                     commit('SET_TODOS', todos)
-                }else{
-                    commit('SET_TODOS', [])
                 }
             })
     },
