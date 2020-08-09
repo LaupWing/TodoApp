@@ -115,5 +115,6 @@ a.logout{
     position: fixed;
     top: 10px;
     right: 10px;
+    cursor: pointer;
 }
 </style>
