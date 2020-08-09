@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home/Home.vue'
+import Home from '../views/Home/Home'
+import Auth from '../views/Auth/Auth'
 
 Vue.use(VueRouter)
 
@@ -9,7 +10,12 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home
-    }
+    },
+    {
+        path: '/auth',
+        name: 'Auth',
+        component: Auth
+    },
 ]
 
 const router = new VueRouter({

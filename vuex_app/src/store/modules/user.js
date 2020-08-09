@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import router from '../../router'
 
 const state = {
     user: null
@@ -10,9 +11,11 @@ const mutations = {
 }
 const actions ={
     userWatcher({commit}){
-        firebase.auth().onAuthStateChanged(user=>{
-            commit('SET_USER', user)
-        })
+        firebase
+            .auth()
+            .onAuthStateChanged(user=>{
+                commit('SET_USER', user)
+            })
     }
 }
 const getters = {

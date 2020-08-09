@@ -2,8 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import './db/db'    
 import firebase from 'firebase'
-import './db/db'
 
 Vue.config.productionTip = false
 let flag = true
