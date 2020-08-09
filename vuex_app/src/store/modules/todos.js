@@ -1,5 +1,10 @@
 import firebase from 'firebase'
 
+const id = firebase.auth().currentUser.uid
+const ref = firebase
+    .firestore()
+    .collection('todos')
+
 const state = {
     todos: []
 }
@@ -10,16 +15,14 @@ const mutations = {
 }
 const actions ={
     todosWatcher({commit}){
-        const id = firebase.auth().currentUser.uid
-        firebase
-            .firestore()
-            .collection('todos')
+        ref
             .doc(id)
             .onSnapshot(doc=>{
                 const todos = doc.data()
                 commit('SET_TODOS', todos)
             })
-    }
+    },
+    
 }
 const getters = {
     todos: state => state.todos
