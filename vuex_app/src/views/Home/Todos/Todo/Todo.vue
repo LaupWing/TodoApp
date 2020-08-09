@@ -1,5 +1,8 @@
 <template>
-    <div class="todo" :class="todo.done && 'done'">
+    <div 
+        class="todo" 
+        :class="todo.done && 'done'"
+    >
         <h2>{{todo.todo}}</h2>
         <div class="buttons">
             <button 
