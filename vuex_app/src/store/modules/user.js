@@ -2,12 +2,16 @@ import firebase from 'firebase'
 import router from '../../router'
 
 const state = {
-    user: null
+    user: null,
+    error: null
 }
 const mutations = {
     'SET_USER'(state, user){
         state.user = user
-    }
+    },
+    'SET_ERROR'(state, error){
+        state.error = error
+    },
 }
 const actions ={
     userWatcher({commit}){
@@ -24,6 +28,20 @@ const actions ={
                         name: 'Auth'
                     })
                 }
+            })
+    },
+    logout(){
+        firebase.auth().signOut()
+    },
+    async login({commit}, {email,password}){
+        return firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(()=>{
+                commit('SET_ERROR',null)
+            })
+            .catch(e=>{
+                commit('SET_ERROR',e.message)
             })
     }
 }
