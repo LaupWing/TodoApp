@@ -6,6 +6,7 @@ import firebase from 'firebase'
 
 Vue.config.productionTip = false
 let flag = false
+
 firebase.auth().onAuthStateChanged(()=>{
     if(!flag){
         new Vue({

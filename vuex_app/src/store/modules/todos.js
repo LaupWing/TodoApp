@@ -1,6 +1,5 @@
 import firebase from 'firebase'
 
-const id = firebase.auth().currentUser.uid
 const ref = firebase
     .firestore()
     .collection('todos')
@@ -15,6 +14,7 @@ const mutations = {
 }
 const actions ={
     todosWatcher({commit}){
+        const id = firebase.auth().currentUser.uid
         ref
             .doc(id)
             .onSnapshot(doc=>{

@@ -15,6 +15,15 @@ const actions ={
             .auth()
             .onAuthStateChanged(user=>{
                 commit('SET_USER', user)
+                if(user){
+                    router.currentRoute.name !== 'Home' && router.push({
+                        name: 'Home'
+                    })
+                }else{
+                    router.currentRoute.name !== 'Auth' && router.push({
+                        name: 'Auth'
+                    })
+                }
             })
     }
 }
