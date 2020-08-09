@@ -7,13 +7,13 @@
         <div class="buttons">
             <button 
                 class="done"
-                @click="$emit('toggle-check', todo.todo)"
+                @click="$store.dispatch('toggleCheck', todo.todo)"
             >
                 <img :src="require('@/assets/done.svg')" alt="">
             </button>
             <button 
                 class="delete"
-                @click="$emit('remove-todo', todo.todo)"
+                @click="$store.dispatch('removeTodo', todo.todo)"
             >
                 <img :src="require('@/assets/delete.svg')" alt="">
             </button>
