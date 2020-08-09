@@ -33,16 +33,19 @@ const actions ={
     logout(){
         firebase.auth().signOut()
     },
-    async login({commit}, {email,password}){
-        return firebase
+    login({commit}, {email,password}){
+        firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then(()=>{
-                commit('SET_ERROR',null)
-            })
-            .catch(e=>{
-                commit('SET_ERROR',e.message)
-            })
+            .then(()=>commit('SET_ERROR',null))
+            .catch(e=>commit('SET_ERROR',e.message))
+    },
+    signup({commit}, {email, password}){
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(()=>commit('SET_ERROR',null))
+            .catch(e=>commit('SET_ERROR',e.message))
     }
 }
 const getters = {

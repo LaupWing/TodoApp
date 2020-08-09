@@ -37,8 +37,12 @@ export default {
         return{
             email: '',
             password: '',
-            password_confirm: '',
-            error: null
+            password_confirm: ''
+        }
+    },
+    computed: {
+        error(){
+            return this.$store.getters.error
         }
     },
     methods:{
@@ -47,10 +51,7 @@ export default {
                 alert('Passwords doesnt match')
                 return
             }
-            firebase
-                .auth()
-                .createUserWithEmailAndPassword(this.email, this.password)
-                .catch(e=>this.error = e.message)
+            this.$store.dispatch('signup', {email:this.email, password:this.password})
         }
     }
 }

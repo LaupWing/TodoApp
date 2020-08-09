@@ -1,7 +1,7 @@
 <template>
     <form 
         class="login_form"
-        @submit.prevent="login"
+        @submit.prevent="$store.dispatch('login', {email, password})"
     >
         <input  
             type="text" 
@@ -40,15 +40,5 @@ export default {
             error: ''
         }
     },
-    methods:{
-        login(){
-            firebase
-                .auth()
-                .signInWithEmailAndPassword(this.email, this.password)
-                .catch(e=>{
-                    this.error = e.message
-                })
-        }
-    }
 }
 </script>
