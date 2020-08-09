@@ -23,28 +23,16 @@ export default {
     },
     methods:{
         async handleSubmit(){
+            const {todos} = this.$store.getters.todos
             if(this.todo ===''){
                 alert('Todo is empty')
                 return
             }
-            const ref = firebase
-                .firestore()
-                .collection('todos')
-                .doc(firebase.auth().currentUser.uid)
-            const doc = await ref.get()
-            const {todos} = doc.data()
             if(todos.find(x=>x.todo===this.todo)){
                 alert('Todo already exists')
                 return
             }
-            todos.push({
-                todo: this.todo,
-                done: false
-            })
-
-            ref.set({
-                todos
-            })
+            this.$store.dispatch('addTodo', this.todo)
             this.todo = ''
         }
     }

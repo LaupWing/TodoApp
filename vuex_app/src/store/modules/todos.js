@@ -45,7 +45,16 @@ const actions ={
             todos: updatedTodos
         })
     },
-    
+    addTodo({commit}, todo){
+        const {todos} = state.todos
+        todos.push({
+            todo: todo,
+            done: false
+        })
+        userCollection().set({
+            todos
+        })
+    }
 }
 
 
