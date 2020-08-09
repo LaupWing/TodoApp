@@ -25,7 +25,11 @@ const actions ={
             .doc(id)
             .onSnapshot(doc=>{
                 const todos = doc.data()
-                commit('SET_TODOS', todos)
+                if(todos){
+                    commit('SET_TODOS', todos)
+                }else{
+                    commit('SET_TODOS', [])
+                }
             })
     },
     async toggleCheck({commit}, todo){
