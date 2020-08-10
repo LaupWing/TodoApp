@@ -1,12 +1,9 @@
 <?php
+    
+    require_once "utils/redirect.php";
     require_once "config.php";
     $email = $password = $password_confirm = "";
     $errors = array();
-
-    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: home.php");
-        exit;
-    }
 
     if($_SERVER["REQUEST_METHOD"]== "POST"){
         $email = trim($_POST['email']);
