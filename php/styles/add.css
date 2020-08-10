@@ -1,0 +1,20 @@
+.home form.add{
+    display: flex;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+    width: 400px;
+}
+
+.home form.add button{
+    border-radius: 5px;
+    width: 3em;
+    background-color: var(--lightRed);
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home form.add img{
+    width: 2em;
+}
