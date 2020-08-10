@@ -7,7 +7,7 @@
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
         $password_confirm = trim($_POST['password_confirm']);
-        
+
         if(empty($email)){
             $errors[] = 'Email is required';
         }else{
@@ -47,8 +47,23 @@
                 }
             }
         }
-        // echo htmlspecialchars($_POST['password']);
+        
+        if(empty($errors)){
+            $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
+
+            if($stmt = mysqli_prepare($link, $sql)){
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+                mysqli_stmt_bind_param($stmt, "ss", $email, $hash);
+
+                if(mysqli_stmt_execute($stmt)){
+                    header("location: home.php");
+                }else{
+                    echo "Something went wrong. Please try later again.";
+                }
+            }
+        }
     }
+    mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html lang="en">
