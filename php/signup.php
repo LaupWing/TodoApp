@@ -1,12 +1,13 @@
 <?php
     require_once "config.php";
-    $email = $password = $confirm_password = "";
+    $email = $password = $password_confirm = "";
     $errors = array();
 
     if($_SERVER["REQUEST_METHOD"]== "POST"){
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
-
+        $password_confirm = trim($_POST['password_confirm']);
+        
         if(empty($email)){
             $errors[] = 'Email is required';
         }else{
@@ -33,9 +34,17 @@
         }
         if(empty($password)){
             $errors[] = 'Password is required <br/>';
+        }elseif(strlen($password)<6) {
+            $errors[] = 'Password must have atleast 6 characters';
+        }
+
+        if(empty($password_confirm)){
+            $errors[] = "Please confirm password";
         }else{
-            if(strlen($password)<6){
-                echo "Credentials doesnt match";
+            if(!empty($password_confirm) && !empty($password)){
+                if($password_confirm !== $password){
+                    $errors[] = "Password did not match";
+                }
             }
         }
         // echo htmlspecialchars($_POST['password']);
@@ -48,12 +57,14 @@
     <main class="login">
         <h1>Welcome</h1>
         <div class="form-container">
-            <form class="signup_form" method="GET" action="signup.php">
+            <form class="signup_form" method="POST" action="signup.php">
                 <input name='email' type="text" placeholder="Your Email...">
                 <input name='password' type="password" placeholder="Your Password...">
                 <input name='password_confirm' type="password" placeholder="Confirm your Password...">
-                <p class="error"></p>
-                <button name="submit" type="submit" value="submit">Submit</button>
+                <?php foreach($errors as $error) {?>
+                    <p class="error"> <?php echo $error; ?></p>
+                <?php } ?>
+                <button type="submit">Submit</button>
                 <a href="#">Already hava account? Login here!</a>
             </form>
         </div>
