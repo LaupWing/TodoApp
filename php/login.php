@@ -4,8 +4,8 @@
     $errors = array();
 
     if($_SERVER["REQUEST_METHOD"]== "POST"){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
         if(empty($email)){
             $errors[] = 'Email is required <br/>';
         }else{
@@ -15,16 +15,13 @@
                 $sql = "SELECT id FROM users WHERE email = ?";
 
                 if($stmt = mysql_prepare($link, $sql)){
-
-                    $param_email = trim($_POST["email"]);
+                    mysqli_stmt_bind_param($stmt, "s", $email);
+                    
                     if(mysqli_stmt_excecute($stmt)){
                         mysqli_stmt_store_result($stmt);
 
                         if(mysqli_stmt_num_rows($stmt) == 1){
                             $errors[] = "This email is already taken.";
-                            $email = trim($_POST["username"]);
-                        } else{
-                            $email = trim($_POST["username"]);
                         }
                     } else{
                         echo "Something went wrong. Please try again later.";
@@ -51,9 +48,11 @@
         <h1>Welcome</h1>
         <div class="form-container">
             <form class="login_form" method="POST" action="login.php">
-                <input name='email' type="text" placeholder="Your Email...">
+                <input name='email' type="text" value="<?php echo $email; ?>" placeholder="Your Email...">
                 <input name='password' type="password" placeholder="Your Password...">
-                <p class="error"></p>
+                <?php foreach($errors as $error) {?>
+                    <p class="error"> <?php echo $error; ?></p>
+                <?php } ?>
                 <button type="submit">Submit</button>
                 <a href="signup.php">No account? Sign up here!</a>
             </form>
