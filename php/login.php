@@ -1,44 +1,5 @@
 <?php
-    require_once "config.php";
-    $email = $password = $confirm_password = "";
-    $errors = array();
-
-    if($_SERVER["REQUEST_METHOD"]== "POST"){
-        $email = trim($_POST['email']);
-        $password = trim($_POST['password']);
-        if(empty($email)){
-            $errors[] = 'Email is required <br/>';
-        }else{
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                $errors[]="$email is not a valid email";
-            }else{
-                $sql = "SELECT id FROM users WHERE email = ?";
-
-                if($stmt = mysql_prepare($link, $sql)){
-                    mysqli_stmt_bind_param($stmt, "s", $email);
-                    
-                    if(mysqli_stmt_excecute($stmt)){
-                        mysqli_stmt_store_result($stmt);
-
-                        if(mysqli_stmt_num_rows($stmt) == 1){
-                            $errors[] = "This email is already taken.";
-                        }
-                    } else{
-                        echo "Something went wrong. Please try again later.";
-                    }
-                    mysqli_stmt_close($stmt);
-                }
-            }
-        }
-        if(empty($password)){
-            echo 'Password is required <br/>';
-        }else{
-            if(strlen($password)<6){
-                echo "Credentials doesnt match";
-            }
-        }
-        // echo htmlspecialchars($_POST['password']);
-    }
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
