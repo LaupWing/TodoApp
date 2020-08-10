@@ -7,10 +7,30 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         if(empty($email)){
-            echo 'Email is required <br/>';
+            $errors[] = 'Email is required <br/>';
         }else{
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                echo "$email is not a valid email";
+                $errors[]="$email is not a valid email";
+            }else{
+                $sql = "SELECT id FROM users WHERE email = ?";
+
+                if($stmt = mysql_prepare($link, $sql)){
+
+                    $param_email = trim($_POST["email"]);
+                    if(mysqli_stmt_excecute($stmt)){
+                        mysqli_stmt_store_result($stmt);
+
+                        if(mysqli_stmt_num_rows($stmt) == 1){
+                            $errors[] = "This email is already taken.";
+                            $email = trim($_POST["username"]);
+                        } else{
+                            $email = trim($_POST["username"]);
+                        }
+                    } else{
+                        echo "Something went wrong. Please try again later.";
+                    }
+                    mysqli_stmt_close($stmt);
+                }
             }
         }
         if(empty($password)){
