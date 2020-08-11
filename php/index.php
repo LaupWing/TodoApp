@@ -50,7 +50,11 @@
         </button>
     </form>
     <p class="error"></p>
-    <div class="todos"></div>
+    <div class="todos">
+        <?php foreach($todos as $todo){?>
+            <?php include "templates/todo.php"?>
+        <?php }?>
+    </div>
 </main>
 </body>
 </html>
