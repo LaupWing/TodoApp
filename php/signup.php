@@ -58,7 +58,7 @@
                 mysqli_stmt_bind_param($stmt, "ss", $email, $hash);
 
                 if(mysqli_stmt_execute($stmt)){
-                    header("location: home.php");
+                    header("location: index.php");
                 }else{
                     echo "Something went wrong. Please try later again.";
                 }
