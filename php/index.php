@@ -5,7 +5,6 @@
         exit;
     }
     require_once "config.php";
-    print_r($_SESSION);
     $todo = "";
     $errors = array();
 
@@ -39,7 +38,7 @@
 <a class="logout" href="#">Logout</a>
 <main class="home">
     <h1>TodoList</h1>
-    <form class="add" autocomplete="off">
+    <form method="POST" class="add" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <input name="todo" placeholder="What do you want to add" type="text">
         <button type="submit">
             <img src="./assets/plus.svg" alt="">
