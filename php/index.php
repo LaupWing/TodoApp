@@ -29,6 +29,11 @@
             }
         }
     }
+    $sql = "SELECT * FROM todos WHERE owner = $_SESSION[id]";
+    
+    $result = mysqli_query($link, $sql);
+    $todos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    print_r($todos);
     mysqli_close($link);
 ?>
 <!DOCTYPE html>
