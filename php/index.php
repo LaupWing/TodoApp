@@ -36,13 +36,10 @@
     }
     if($_SERVER["REQUEST_METHOD"] == "POST" && trim($_POST["submit"]) == "done"){
         $todoId = mysqli_real_escape_string($link, trim($_POST["todoId"]));
-        // $todoId = trim($_POST["todoId"]);
         $todoQuery = "SELECT * FROM todos WHERE id = $todoId";    
         $result = mysqli_query($link, $todoQuery);
         $todo = mysqli_fetch_assoc($result);
-        print_r($todo);
         $status = $todo['done'] == true ? 0 : 1;
-        print_r($status);
         $updateQuery = "UPDATE todos SET done = $status WHERE id = $todoId";
         if(mysqli_query($link, $updateQuery)){
             header("location: index.php");
