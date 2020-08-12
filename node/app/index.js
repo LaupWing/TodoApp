@@ -5,6 +5,7 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT||1060
+const routes = require('./routes/routes.js');
 
 app
     .use(cors())
@@ -12,4 +13,5 @@ app
     .use(bodyParser.json({limit: '1mb'}))
     .set('view engine', 'ejs')
     .set('views', path.join(__dirname, 'views'))
+    .use(routes)
     .listen(port);
