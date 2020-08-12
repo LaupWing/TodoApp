@@ -1,4 +1,4 @@
-<form class="todo <?php $todo['done'] === 1 ? 'done' : ''?>">
+<form class="todo <?php echo $todo['done'] == true ? 'done' : '';?>"  method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <h2><?php echo htmlspecialchars($todo['todo']) ?></h2>
     <div class="buttons">
         <button type="submit" class="done"><img src="./assets/done.svg" alt=""></button>
