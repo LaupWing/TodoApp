@@ -8,7 +8,8 @@
     $todo = "";
     $errors = array();
 
-    if($_SERVER["REQUEST_METHOD"]== "POST"){
+    if($_SERVER["REQUEST_METHOD"]== "POST" && $_POST["submit"] == 'add'){
+        echo 'add';
         $todo = trim($_POST['todo']);
         if(empty($todo)){
             $errors[] = 'Todo cannot be empty';
@@ -33,7 +34,6 @@
     
     $result = mysqli_query($link, $sql);
     $todos = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    print_r($todos);
     mysqli_close($link);
 ?>
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
     <h1>TodoList</h1>
     <form method="POST" class="add" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <input name="todo" placeholder="What do you want to add" type="text">
-        <button type="submit">
+        <button type="submit" name="submit" value="add">
             <img src="./assets/plus.svg" alt="">
         </button>
     </form>
