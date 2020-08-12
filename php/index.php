@@ -19,7 +19,6 @@
             $errors[] = 'Todo cannot be empty';
         }
 
-        
         if(empty($errors)){
             $sql = "INSERT INTO todos (todo, owner) VALUES (?, ?)";
 
@@ -62,7 +61,7 @@
 <html lang="en">
     <?php include('templates/header.php'); ?>
 <body>
-<a class="logout" href="#">Logout</a>
+<a class="logout" href="logout.php">Logout</a>
 <main class="home">
     <h1>TodoList</h1>
     <form method="POST" class="add" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
