@@ -50,6 +50,15 @@
             echo 'Query error' . mysqli_error($link);
         }
     }
+    if($_SERVER["REQUEST_METHOD"] == "POST" && trim($_POST["submit"]) == "delete"){
+        $todoId = mysqli_real_escape_string($link, trim($_POST["todoId"]));
+        $deleteQuery = "DELETE FROM todos WHERE id = $todoId";
+        if(mysqli_query($link, $deleteQuery)){
+            header("location: index.php");
+        }else{
+            echo 'Query error' . mysqli_error($link);
+        }
+    }
     mysqli_close($link);
 ?>
 <!DOCTYPE html>
