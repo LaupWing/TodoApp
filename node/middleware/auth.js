@@ -4,11 +4,12 @@ const User = require('../models/User.js');
 const auth = async(req,res,next)=>{
     try{
         const cookie = req.get('cookie');
+        console.log(cookie);
         const token = cookie
             .split(';')
             .find(c=>c.includes('todos_token='))
             .trim()
-            .split('todos_token')
+            .split('todos_token=')
             .filter(x=>x!=='')[0]
         const decoded = jwt.verify(token, process.env.JWT_TOKEN);
         const user = await User.findOne({_id: decoded.id, 'tokens.token':token});
