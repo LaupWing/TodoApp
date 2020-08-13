@@ -10,11 +10,11 @@ const auth = async(req,res,next)=>{
             .trim()
             .split('todos_token=')
             .filter(x=>x!=='')[0]
+        console.log(token)
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(decoded);
-        console.log(token);
+        console.log(decoded)
         const user = await User.findOne({_id: decoded._id, 'tokens.token':token});
-        console.log(user);
+        console.log(user)
         if(!user){
             throw new Error('User not found');
         }

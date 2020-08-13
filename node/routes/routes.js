@@ -10,11 +10,6 @@ router
             page: 'home'
         });
     })
-    .post('/login',(req,res)=>{
-        res.render('template',{
-            page: 'login'
-        });
-    })
     .get('/login',(req,res)=>{
         res.render('template',{
             page: 'login',
