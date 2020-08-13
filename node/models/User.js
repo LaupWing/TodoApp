@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
-const validator = require('validator')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const tokenAge = require('../helpers/tokenAge.js');
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -43,7 +44,7 @@ userSchema.methods.generateAuthToken = async function(){
             _id:user._id.toString()
         }, process.env.JWT_SECRET, 
         {
-            expiresIn: '2 days'
+            expiresIn: tokenAge(true)
         });
     user.tokens = user.tokens.concat({token});
     user.save();
@@ -67,7 +68,7 @@ userSchema.pre('save', async function(){
     if(user.isModified('password')){
         user.password = await bcrypt.hash(user.password, 8);
     }
-})
+});
 
 const User = mongoose.model('User', userSchema);
 

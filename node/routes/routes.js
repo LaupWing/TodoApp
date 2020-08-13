@@ -1,6 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 const User = require('../models/User.js');
+const tokenAge = require('../helpers/tokenAge.js');
 
 router  
     .post('/login',(req,res)=>{
@@ -34,7 +35,7 @@ router
             const token = await user.generateAuthToken();
             res.cookie('todos_token', token, {
                 httpOnly: true,
-                maxAge: (24*2) * 60 * 60 *1000
+                maxAge: tokenAge(false)
             });
         }catch(e){
             errors.push(e.message);
