@@ -4,11 +4,9 @@
         <form class="login_form">
             <input name='email' type="text" placeholder="Your Email...">
             <input name='password' type="password" placeholder="Your Password...">
-            <% if(errors){ %>
-                <% errors.forEach(err=>{ %>
-                    <p class="error"><%= err %></p>
-                <% }) %>
-            <% } %>
+            <% errors.forEach(err=>{ %>
+                <p class="error"><%= err %></p>
+            <% }) %>
             <button type="submit">Submit</button>
             <a href="/signup">No account? Sign up here!</a>
         </form>

@@ -2,9 +2,10 @@ const express = require('express');
 const router = new express.Router();
 const User = require('../models/User.js');
 const tokenAge = require('../helpers/tokenAge.js');
+const auth = require('../middleware/auth.js');
 
 router  
-    .get('/', (req,res)=>{
+    .get('/',auth, (req,res)=>{
         res.render('template',{
             page: 'home'
         });
@@ -16,7 +17,8 @@ router
     })
     .get('/login',(req,res)=>{
         res.render('template',{
-            page: 'login'
+            page: 'login',
+            errors:[]
         });
     })
     .post('/signup',async (req,res)=>{
@@ -42,6 +44,7 @@ router
                 httpOnly: true,
                 maxAge: tokenAge(false)
             });
+            res.redirect('/');
         }catch(e){
             errors.push(e.message);
             res.render('template', {
