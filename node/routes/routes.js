@@ -4,6 +4,11 @@ const User = require('../models/User.js');
 const tokenAge = require('../helpers/tokenAge.js');
 
 router  
+    .get('/', (req,res)=>{
+        res.render('template',{
+            page: 'home'
+        });
+    })
     .post('/login',(req,res)=>{
         res.render('template',{
             page: 'login'
