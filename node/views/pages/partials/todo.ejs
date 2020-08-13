@@ -1,6 +1,7 @@
 <form class="todo <%= todo.done && 'done' %>" method="POST" action="edit-todo">
     <h2><%=todo.todo%></h2>
     <div class="buttons">
+        <input type="hidden" name="todoId" value="<%= todo._id %>">
         <button name="done" type="submit" class="done"><img src="/static/assets/done.svg" alt=""></button>
         <button name="delete" type="submit" class="delete"><img src="/static/assets/delete.svg" alt=""></button>
     </div>

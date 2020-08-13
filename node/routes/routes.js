@@ -8,6 +8,7 @@ const auth = require('../middleware/auth.js');
 router  
     .get('/',auth, async (req,res)=>{
         await req.session.user.populate('todos').execPopulate();
+        
         res.render('template',{
             page: 'home',
             todos:  req.session.user.todos
@@ -28,9 +29,17 @@ router
     })
     .post('/edit-todo', async (req, res)=>{
         try{
-
+            const {todoId} = req.body;
+            if('done' in req.body){
+                const todo = await Todo.findById(todoId);
+                todo.done = !todo.done;
+                await todo.save();
+            }else{
+                await Todo.findByIdAndDelete(todoId);
+            }
+            res.redirect('/');
         }catch(e){
-            
+            console.log(e.message);
         }
     })
     .get('/login',(req,res)=>{
