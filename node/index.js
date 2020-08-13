@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
+require('./db/db.js');
 const app = express();
 const port = process.env.PORT||1060
 const routes = require('./routes/routes.js');

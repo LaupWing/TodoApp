@@ -34,41 +34,41 @@ const userSchema = new mongoose.Schema({
             required: true
         }
     }]
-})
+});
 
 userSchema.methods.generateAuthToken = async function(){
-    const user = this
+    const user = this;
     const token = jwt.sign(
         {
             _id:user._id.toString()
         }, process.env.JWT_SECRET, 
         {
             expiresIn: '2 days'
-        })
-    user.tokens = user.tokens.concat({token})
-    user.save()
-    return token
+        });
+    user.tokens = user.tokens.concat({token});
+    user.save();
+    return token;
 }
 
 userSchema.statics.findByCredentials = async (email,password)=>{
-    const user = await User.findOne({email})
+    const user = await User.findOne({email});
     if(!user){
-        throw new Error('Given info is invalid')
+        throw new Error('Given info is invalid');
     }
-    const isMatch = await bcrypt.compare(password,user.password)
+    const isMatch = await bcrypt.compare(password,user.password);
     if(!isMatch){
-        throw new Error('Given info is invalid')
+        throw new Error('Given info is invalid');
     }
-    return user
+    return user;
 }
 
-userSchema.pre('save', async function(next){
-    const user = this
+userSchema.pre('save', async function(){
+    const user = this;
     if(user.isModified('password')){
-        user.password = await bcrypt.hash(user.password, 8)
+        user.password = await bcrypt.hash(user.password, 8);
     }
 })
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema);
 
-module.exports = User
+module.exports = User;
