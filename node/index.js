@@ -19,7 +19,7 @@ app
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: true,
-        cookie: { secure: true }
+        cookie: { secure: false }
       }))
     .set('views', path.join(__dirname, 'views'))
     .use(routes)

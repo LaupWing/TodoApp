@@ -1,6 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 const User = require('../models/User.js');
+const Todo = require('../models/Todo.js');
 const tokenAge = require('../helpers/tokenAge.js');
 const auth = require('../middleware/auth.js');
 
@@ -10,9 +11,15 @@ router
             page: 'home'
         });
     })
-    .post('/add-todo', (req,res)=>{
+    .post('/add-todo', async (req,res)=>{
         try{
-            // const todo = 
+            const todo = new Todo({
+                owner: req.session.user._id,
+                todo: req.body.todo
+            });
+            await todo.save();
+
+            res.redirect('/');
         }catch(e){
             console.log(e.message);
         }
