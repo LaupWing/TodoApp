@@ -6,9 +6,11 @@ const tokenAge = require('../helpers/tokenAge.js');
 const auth = require('../middleware/auth.js');
 
 router  
-    .get('/',auth, (req,res)=>{
+    .get('/',auth, async (req,res)=>{
+        await req.session.user.populate('todos').execPopulate();
         res.render('template',{
-            page: 'home'
+            page: 'home',
+            todos:  req.session.user.todos
         });
     })
     .post('/add-todo', async (req,res)=>{
