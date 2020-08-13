@@ -23,14 +23,13 @@ router
                 req.body.password
             );
             const token = await user.generateAuthToken();
-            res.cookie('dating_token', token, {
+            res.cookie('todos_token', token, {
                 httpOnly: true,
                 maxAge: tokenAge(false)
             });
             res.redirect('/');
         }
         catch(e){
-            console.log(e.message)
             res.render('template',{
                 page: 'login',
                 errors:['Invalid password/email']

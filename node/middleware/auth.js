@@ -9,12 +9,10 @@ const auth = async(req,res,next)=>{
             .find(c=>c.includes('todos_token='))
             .trim()
             .split('todos_token=')
-            .filter(x=>x!=='')[0]
-        console.log(token)
+            .filter(x=>x!=='')[0];
+
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(decoded)
         const user = await User.findOne({_id: decoded._id, 'tokens.token':token});
-        console.log(user)
         if(!user){
             throw new Error('User not found');
         }
@@ -24,7 +22,6 @@ const auth = async(req,res,next)=>{
         req.token = token;
         next();
     }catch(e){
-        console.log(e.message)
         res.redirect('/login');
     }
 }
