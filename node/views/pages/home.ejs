@@ -8,5 +8,9 @@
         </button>
     </form>
     <p class="error"></p>
-    <div class="todos"></div>
+    <div class="todos">
+        <% todos.forEach(todo=>{ %>
+            <%- include('partials/todo', {todo}) %>
+        <% }) %>
+    </div>
 </main>
