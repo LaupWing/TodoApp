@@ -10,6 +10,13 @@ router
             page: 'home'
         });
     })
+    .post('/add-todo', (req,res)=>{
+        try{
+            // const todo = 
+        }catch(e){
+            console.log(e.message);
+        }
+    })
     .get('/login',(req,res)=>{
         res.render('template',{
             page: 'login',
