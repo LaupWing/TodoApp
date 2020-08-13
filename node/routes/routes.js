@@ -58,6 +58,18 @@ router
             page: 'signup',
             errors:[]
         });
+    }) 
+    .get('/logout', auth, async (req,res)=>{
+        try{
+            console.log('logout')
+            req.session.user.tokens = req.session.user.tokens.filter(token=>token.token !== req.token)
+            await req.session.user.save()
+            res
+                .clearCookie('dating_token')
+                .redirect('/login')
+        }catch(e){
+            res.status(500).send(e)
+        }
     });
 
 module.exports = router;
