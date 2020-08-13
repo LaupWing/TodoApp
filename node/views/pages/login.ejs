@@ -1,7 +1,7 @@
 <main class="login">
     <h1>Welcome</h1>
     <div class="form-container">
-        <form class="login_form">
+        <form class="login_form" action="/login" method="POST">
             <input name='email' type="text" placeholder="Your Email...">
             <input name='password' type="password" placeholder="Your Password...">
             <% errors.forEach(err=>{ %>

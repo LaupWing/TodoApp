@@ -21,6 +21,27 @@ router
             errors:[]
         });
     })
+    .post('/login', async (req,res)=>{
+        try{
+            const user = await User.findByCredentials(
+                req.body.email,
+                req.body.password
+            );
+            const token = await user.generateAuthToken();
+            res.cookie('dating_token', token, {
+                httpOnly: true,
+                maxAge: tokenAge(false)
+            });
+            res.redirect('/');
+        }
+        catch(e){
+            console.log(e.message)
+            res.render('template',{
+                page: 'login',
+                errors:['Invalid password/email']
+            });
+        }
+    })
     .post('/signup',async (req,res)=>{
         const {
             email,
