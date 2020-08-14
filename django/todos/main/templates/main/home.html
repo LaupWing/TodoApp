@@ -1,5 +1,16 @@
 {% extends 'main/base.html' %}
 {% block title %} Todos: Home {% endblock %}
 {% block content %}
-    <h2>home</h2>
+    <a class="logout" href="#">Logout</a>
+    <main class="home">
+        <h1>TodoList</h1>
+        <form class="add" autocomplete="off">
+            <input name="todo" placeholder="What do you want to add" type="text">
+            <button type="submit">
+                <img src="./assets/plus.svg" alt="">
+            </button>
+        </form>
+        <p class="error"></p>
+        <div class="todos"></div>
+    </main>
 {% endblock %}
