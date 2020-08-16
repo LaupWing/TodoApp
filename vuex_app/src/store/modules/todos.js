@@ -48,7 +48,7 @@ const actions ={
         })
     },
     addTodo({commit}, todo){
-        const {todos} = state.todos
+        const {todos} = state
         todos.push({
             todo: todo,
             done: false

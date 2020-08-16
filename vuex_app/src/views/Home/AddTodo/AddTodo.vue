@@ -23,7 +23,7 @@ export default {
     },
     methods:{
         async handleSubmit(){
-            const {todos} = this.$store.getters.todos
+            const {todos} = this.$store.getters
             if(this.todo ===''){
                 alert('Todo is empty')
                 return
