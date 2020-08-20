@@ -8,7 +8,7 @@ const Signup = () => {
             <input name='password_confirm' type="password" placeholder="Confirm your Password..."/>
             <p class="error"></p>
             <button type="submit">Submit</button>
-            <p>Already hava account? Login here!</p>
+            <p className="link">Already hava account? Login here!</p>
         </form>
     );
 }

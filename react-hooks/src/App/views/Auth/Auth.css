@@ -37,7 +37,7 @@ main.login form input{
     z-index: -1;
 }
 
-.login a{
+p.link{
     text-align: right;
     margin-top: 20px;
     font-style: italic;
