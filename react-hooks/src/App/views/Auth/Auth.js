@@ -6,9 +6,9 @@ import './Auth.css'
 const Auth = () => {
     const [login, setLogin] = useState(true);
     return (
-        <main class="login">
+        <main className="login">
             <h1>Welcome</h1>
-            <div class="form-container">
+            <div className="form-container">
                 {login? 
                     <Login 
                         toggle={()=>setLogin(!login)}
