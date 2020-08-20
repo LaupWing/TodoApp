@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import {Switch, Route} from 'react-router';
-import Home from './views/Home/Home'
-import Auth from './views/Auth/Auth'
+import Home from './views/Home/Home';
+import Auth from './views/Auth/Auth';
 
 function App() {
   return (
