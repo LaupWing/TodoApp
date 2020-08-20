@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import firebase from 'firebase';
 
 const Signup = ({toggle}) => {
-    const handleSubmit = (e)=>{
+    const [error, setError] = useState(null);
+
+    const handleSubmit = async (e)=>{
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -10,14 +12,22 @@ const Signup = ({toggle}) => {
         if(password !== password_confirm){
             alert('Passwords doesnt match');
         }
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        try{
+            await firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, password);
+            setError(null);
+
+        }catch(e){
+            setError(e.message);
+        }
     }
     return (
         <form className="signup_form" onSubmit={(e)=>handleSubmit(e)}>
             <input name='email' type="text" placeholder="Your Email..."/>
             <input name='password' type="password" placeholder="Your Password..."/>
             <input name='password_confirm' type="password" placeholder="Confirm your Password..."/>
-            <p className="error"></p>
+            {error && <p className="error">{error}</p>}
             <button type="submit">Submit</button>
             <p className="link" onClick={()=>toggle()}>Already hava account? Login here!</p>
         </form>
