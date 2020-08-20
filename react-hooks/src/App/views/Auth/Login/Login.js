@@ -8,7 +8,7 @@ const Login = () => {
             <input name='password' type="password" placeholder="Your Password..."/>
             <p class="error"></p>
             <button type="submit">Submit</button>
-            <a href="#">No account? Sign up here!</a>
+            <p>No account? Sign up here!</p>
         </form>
     );
 }
