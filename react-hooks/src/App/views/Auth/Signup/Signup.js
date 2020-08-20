@@ -10,7 +10,7 @@ const Signup = ({toggle}) => {
         if(password !== password_confirm){
             alert('Passwords doesnt match');
         }
-        
+        firebase.auth().createUserWithEmailAndPassword(email, password)
     }
     return (
         <form className="signup_form" onSubmit={(e)=>handleSubmit(e)}>
