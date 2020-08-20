@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import firebase from 'firebase';
+import {withRouter} from 'react-router-dom';
 
-const Signup = ({toggle}) => {
+const Signup = ({toggle, history}) => {
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e)=>{
@@ -17,7 +18,7 @@ const Signup = ({toggle}) => {
                 .auth()
                 .createUserWithEmailAndPassword(email, password);
             setError(null);
-
+            history.push('/');
         }catch(e){
             setError(e.message);
         }
@@ -34,4 +35,4 @@ const Signup = ({toggle}) => {
     );
 }
 
-export default Signup;
+export default withRouter(Signup);
