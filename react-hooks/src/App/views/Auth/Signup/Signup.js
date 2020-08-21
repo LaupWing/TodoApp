@@ -24,7 +24,7 @@ const Signup = ({toggle, history}) => {
         }
     }
     return (
-        <form className="signup_form" onSubmit={(e)=>handleSubmit(e)}>
+        <form className="signup_form" onSubmit={handleSubmit}>
             <input name='email' type="text" placeholder="Your Email..."/>
             <input name='password' type="password" placeholder="Your Password..."/>
             <input name='password_confirm' type="password" placeholder="Confirm your Password..."/>
