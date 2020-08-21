@@ -15,6 +15,16 @@ const Todos = () => {
             todos: todos.filter(x=>x!==todo)
         });
     }
+    const toggleDone = (todo)=>{
+        userCollection().set({
+            todos: todos.map(x=>{
+                if(x===todo){
+                    x.done = !x.done;
+                }
+                return x;
+            })
+        });
+    }
     useEffect(()=>{
         userCollection().onSnapshot(snap=>{
             if(snap.exists){
@@ -30,6 +40,7 @@ const Todos = () => {
                 <Todo 
                     key={i} 
                     deleteTodo={deleteTodo} 
+                    toggleDone={toggleDone}
                     todo={todo}/>
             )}
         </div>
