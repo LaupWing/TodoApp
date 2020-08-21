@@ -6,7 +6,7 @@ import firebase from 'firebase';
 
 const Auth = ({history}) => {
     const [login, setLogin] = useState(true);
-    if(firebase.auth().user){
+    if(firebase.auth().currentUser){
         history.replace('/');
     }
 
