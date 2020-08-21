@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
 import firebase from 'firebase';
+import {withRouter} from 'react-router-dom';
 
-const Login = ({toggle}) => {
+const Login = ({toggle, history}) => {
     const [error, setError] = useState(null);
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        
+
         try{
-            firebase
+            await firebase
                 .auth()
-                .signInWithEmailAndPassword(email, password)
+                .signInWithEmailAndPassword(email, password);
+            history.push('/');
         }catch(e){
             setError(e.message);
         }
@@ -29,4 +31,4 @@ const Login = ({toggle}) => {
     );
 }
 
-export default Login;
+export default withRouter(Login);
