@@ -10,7 +10,11 @@ const Todos = () => {
         
         return db.doc(id)
     }
-    console.log('rendering')
+    const deleteTodo = (todo)=>{
+        userCollection().set({
+            todos: todos.filter(x=>x!==todo)
+        });
+    }
     useEffect(()=>{
         userCollection().onSnapshot(snap=>{
             if(snap.exists){
@@ -22,7 +26,12 @@ const Todos = () => {
     },[])
     return (
         <div className="todos">
-            {todos && todos.map((todo, i)=><Todo key={i} todo={todo}/>)}
+            {todos && todos.map((todo, i)=>
+                <Todo 
+                    key={i} 
+                    deleteTodo={deleteTodo} 
+                    todo={todo}/>
+            )}
         </div>
     );
 }
