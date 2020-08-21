@@ -8,12 +8,12 @@ const Home = ({history}) => {
         history.replace('/auth')
     }
     return (
-        <main class="home">
+        <main className="home">
             {/* <a class="logout">Logout</a> */}
             <h1>TodoList</h1>
             <AddTodo/>
             <Todos/>
-            <p class="error"></p>
+            <p className="error"></p>
         </main>
     );
 }

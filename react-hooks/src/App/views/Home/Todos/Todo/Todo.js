@@ -3,12 +3,12 @@ import styles from './Todo.module.css';
 
 
 
-const Todo = ({todo}) => {
-
+const Todo = (props) => {
+    console.log(props)
     return (
         <div className={styles["todo"]}>
-        <h2>{todo.todo}</h2>
-        <div class="buttons">
+        <h2>{props.todo}</h2>
+        <div className={styles["buttons"]}>
             <button className={styles["done"]}>
                 <img src={require('../../../../../assets/done.svg')} alt="toggle"/>
             </button>

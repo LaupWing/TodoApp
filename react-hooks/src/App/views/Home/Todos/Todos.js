@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import firebase from 'firebase';
 import Todo from './Todo/Todo'
 
@@ -10,14 +10,19 @@ const Todos = () => {
         
         return db.doc(id)
     }
-    userCollection().onSnapshot(snap=>{
-        if(snap.exists){
-            setTodos(snap.data().todos)
-        }
-    })
+    console.log('rendering')
+    useEffect(()=>{
+        userCollection().onSnapshot(snap=>{
+            if(snap.exists){
+                const {todos} = snap.data()
+                setTodos(todos)
+            }
+        })
+
+    },[])
     return (
         <div className="todos">
-            {todos && todos.map(todo=><Todo todo={todo}/>)}
+            {todos && todos.map((todo, i)=><Todo key={i} todo={todo}/>)}
         </div>
     );
 }

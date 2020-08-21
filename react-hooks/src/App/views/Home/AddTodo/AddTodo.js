@@ -3,7 +3,7 @@ import styles from './AddTodo.module.css';
 
 const AddTodo = () => {
     return (
-        <form className={styles["add"]} autocomplete="off">
+        <form className={styles["add"]} autoComplete="off">
         <input 
             placeholder="What do you want to add" 
             type="text"
