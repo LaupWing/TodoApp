@@ -1,0 +1,37 @@
+.todo{
+    background: white;
+    display: flex;
+    margin: 15px 0;
+    align-items: center;
+}
+.todo img{
+    width: 1.8em;
+    transition: transform .25s;
+}
+
+.todo .buttons{
+    display: flex;
+}
+.todo h2{
+    flex: 1;
+    padding-left: 10px;
+    font-weight: normal;
+    font-size: 1em;
+}
+.todo button{
+    padding: 5px 8px;
+}
+.todo button:hover img{
+    transform: scale(.8);
+}
+.todo .done{
+    background: var(--green);
+}
+.todo .delete{
+    background: var(--red);
+}
+
+.todo.done{
+    opacity: .5;
+    text-decoration: line-through;
+}
