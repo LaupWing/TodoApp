@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './App/App';
 import * as serviceWorker from './serviceWorker';
 import userReducer from './store/reducers/user';
 import todosReducer from './store/reducers/todos';
