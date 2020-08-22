@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import firebase from '../../../../../react-hooks/src/App/views/Home/node_modules/firebase';
+import firebase from 'firebase';
 import AddTodo from './AddTodo/AddTodo';
 import Todos from './Todos/Todos';
 

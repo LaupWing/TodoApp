@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter} from 'react-router-dom';
 import userReducer from './store/reducers/user';
 import todosReducer from './store/reducers/todos';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
@@ -20,7 +21,9 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <App />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

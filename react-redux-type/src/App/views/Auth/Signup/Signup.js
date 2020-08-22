@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import firebase from '../../../../../../react-hooks/src/App/views/Home/node_modules/firebase';
+import firebase from 'firebase';
 import {withRouter} from 'react-router-dom';
 
 const Signup = ({toggle, history}) => {
