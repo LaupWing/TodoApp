@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import userReducer from './store/reducers/user';
 import todosReducer from './store/reducers/todos';
 import {createStore, combineReducers} from 'redux';
-// import {} from 'react-re'
+import {Provider} from 'react-redux';
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -18,7 +18,9 @@ const store = createStore(rootReducer)
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 );
