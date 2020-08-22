@@ -5,15 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import userReducer from './store/reducers/user';
 import todosReducer from './store/reducers/todos';
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
     user: userReducer,
     todos: todosReducer
 });
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 
 ReactDOM.render(
