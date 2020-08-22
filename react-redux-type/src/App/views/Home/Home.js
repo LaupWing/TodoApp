@@ -44,7 +44,11 @@ const Home = ({history}) => {
             {/* <a class="logout">Logout</a> */}
             <h1>TodoList</h1>
             <AddTodo userCollection={userCollection} todos={todos}/>
-            <Todos todos={todos} deleteTodo={deleteTodo} toggleDone={toggleDone}/>
+            <Todos 
+                todos={todos} 
+                deleteTodo={deleteTodo} 
+                toggleDone={toggleDone}
+            />
             <p className="error"></p>
         </main>
     );
