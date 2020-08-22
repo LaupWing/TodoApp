@@ -9,6 +9,7 @@ import todosReducer from './store/reducers/todos';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
+import './db';
 
 const rootReducer = combineReducers({
     user: userReducer,
