@@ -9,7 +9,7 @@ const Login = ({toggle, error, onLogin}) => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        onLogin(email, password);
+        onLogin({email, password});
     }
 
     return (
@@ -31,7 +31,7 @@ const mapStateToError = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{
-        onLogin: ()=>dispatch(actions.loginUser)
+        onLogin: (info)=>dispatch(actions.loginUser(info))
     }
 }
 

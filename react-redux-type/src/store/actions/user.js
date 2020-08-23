@@ -31,6 +31,7 @@ export const loginUser = ({email,password})=>{
         try{
             await firebase.auth().signInWithEmailAndPassword(email, password)
         }catch(e){
+            console.log(e)
             dispatch({
                 type: actionTypes.SET_USER_ERROR,
                 error: e.message
