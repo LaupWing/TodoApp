@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Todo.module.css';
 
-const Todo = ({todo, deleteTodo, toggleDone}) => {
+const Todo = ({todo}) => {
+    const toggleDone = ()=>{}
+    const deleteTodo = ()=>{}
     return (
         <div className={`${styles["todo"]} ${todo.done? styles['done'] : ''}`}>
             <h2>{todo.todo}</h2>
