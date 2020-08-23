@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import firebase from 'firebase';
-import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import * as actions from '../../../../store/actions';
 
 const Login = ({toggle, history}) => {
     const [error, setError] = useState(null);
@@ -31,4 +32,16 @@ const Login = ({toggle, history}) => {
     );
 }
 
-export default withRouter(Login);
+const mapStateToError = state =>{
+    return{
+        error: state.user.error
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        onLogin: ()=>dispatch(actions.loginUser)
+    }
+}
+
+export default connect(mapStateToError, mapDispatchToProps)(Login);
