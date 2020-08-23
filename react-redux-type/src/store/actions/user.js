@@ -4,8 +4,9 @@ import * as actionTypes from '../actionTypes';
 export const userAuthState = ()=>{
     return dispatch =>{
         firebase.auth().onAuthStateChanged(user=>{
+            console.log(user);
             dispatch({
-                type: actionTypes.DELETE_TODO,
+                type: actionTypes.SET_USER,
                 user
             });
         })

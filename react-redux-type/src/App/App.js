@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import {Switch, Route} from 'react-router';
+import {Switch, Route, Redirect} from 'react-router';
 import Home from './views/Home/Home';
+import {connect} from 'react-redux';
 import Auth from './views/Auth/Auth';
+import * as actions from '../store/actions'
 
-function App() {
+function App({onAuthStateUser, user}) {
+    useEffect(()=>{
+        onAuthStateUser();
+    },[onAuthStateUser]);
+
     return (
         <div className="App">
+            {user ? <Redirect to="/"/> : <Redirect to="auth"/> }
             <Switch>
                 <Route path="/auth" component={Auth}/>
                 <Route exact path="/" component={Home}/>
@@ -15,4 +22,16 @@ function App() {
     );
 }
 
-export default App;
+const mapDispatchToProps = dispatch=>{
+    return {
+        onAuthStateUser :()=> dispatch(actions.userAuthState())
+    }
+}
+
+const mapStateToProps = state =>{
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
