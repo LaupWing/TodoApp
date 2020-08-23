@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
-import firebase from 'firebase';
+import React, {} from 'react';
+import createUser from '../../../../db_utils/createUser';
 import {withRouter} from 'react-router-dom';
 
-const Signup = ({toggle, history}) => {
-    const [error, setError] = useState(null);
+const Signup = ({toggle}) => {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -13,15 +12,7 @@ const Signup = ({toggle, history}) => {
         if(password !== password_confirm){
             alert('Passwords doesnt match');
         }
-        try{
-            await firebase
-                .auth()
-                .createUserWithEmailAndPassword(email, password);
-            setError(null);
-            history.push('/');
-        }catch(e){
-            setError(e.message);
-        }
+        createUser(email,password);
     }
     return (
         <form className="signup_form" onSubmit={handleSubmit}>
