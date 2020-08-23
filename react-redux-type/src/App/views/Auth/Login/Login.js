@@ -1,24 +1,15 @@
-import React, {useState} from 'react';
-import firebase from 'firebase';
+import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../../../store/actions';
 
-const Login = ({toggle, history}) => {
-    const [error, setError] = useState(null);
+const Login = ({toggle, error, onLogin}) => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
 
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        try{
-            await firebase
-                .auth()
-                .signInWithEmailAndPassword(email, password);
-            history.push('/');
-        }catch(e){
-            setError(e.message);
-        }
+        onLogin(email, password);
     }
 
     return (
