@@ -1,8 +1,8 @@
 import React, {} from 'react';
-import createUser from '../../../../db_utils/createUser';
 import {connect} from 'react-redux';
+import * as actions from '../../../../store/actions';
 
-const Signup = ({toggle, error}) => {
+const Signup = ({toggle, error,createUser}) => {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -32,4 +32,11 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps)(Signup);
+const mapDispatchToProps = dispatch=>{
+    return {
+        createUser :()=> dispatch(actions.userAuthState())
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

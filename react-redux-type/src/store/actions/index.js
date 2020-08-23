@@ -1,3 +1,5 @@
 export {
-    userAuthState
+    userAuthState,
+    createUser,
+    loginUser
 } from './user';
