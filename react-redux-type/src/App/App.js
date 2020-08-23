@@ -4,7 +4,7 @@ import {Switch, Route, Redirect} from 'react-router';
 import Home from './views/Home/Home';
 import {connect} from 'react-redux';
 import Auth from './views/Auth/Auth';
-import * as actions from '../store/actions'
+import * as actions from '../store/actions';
 
 function App({onAuthStateUser, user}) {
     useEffect(()=>{
@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch=>{
 
 const mapStateToProps = state =>{
     return {
-        user: state.user
+        user: state.user.user
     }
 }
 

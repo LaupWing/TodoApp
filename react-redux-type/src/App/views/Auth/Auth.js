@@ -3,7 +3,7 @@ import Login from './Login/Login';
 import Signup from './Signup/Signup';
 import './Auth.css';
 
-const Auth = ({history}) => {
+const Auth = () => {
     const [login, setLogin] = useState(true);
     return (
         <main className="login">
