@@ -12,3 +12,16 @@ export const userAuthState = ()=>{
         })
     }
 }
+
+export const createUser = ({email,password})=>{
+    return async dispatch =>{
+        try{
+            await firebase.auth().createUserWithEmailAndPassword(email, password)
+        }catch(e){
+            dispatch({
+                type: actionTypes.SET_USER_ERROR,
+                error: e.message
+            })
+        }
+    } 
+}

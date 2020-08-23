@@ -1,8 +1,8 @@
 import React, {} from 'react';
 import createUser from '../../../../db_utils/createUser';
-import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-const Signup = ({toggle}) => {
+const Signup = ({toggle, error}) => {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -26,4 +26,10 @@ const Signup = ({toggle}) => {
     );
 }
 
-export default withRouter(Signup);
+const mapStateToProps = state =>{
+    return {
+        error: state.user.error
+    }
+}
+
+export default connect(mapStateToProps)(Signup);
