@@ -1,42 +1,31 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import firebase from 'firebase';
 import AddTodo from './AddTodo/AddTodo';
 import Todos from './Todos/Todos';
 
 const Home = ({history}) => {
-    if(!firebase.auth().currentUser){
-        history.replace('/auth')
-    }
-    const [todos, setTodos] = useState([]);
+    // if(!firebase.auth().currentUser){
+    //     history.replace('/auth')
+    // }
+    // const [todos, setTodos] = useState([]);
     
-    const deleteTodo = (todo)=>{
-        userCollection().set({
-            todos: todos.filter(x=>x!==todo)
-        });
-    }
-    const toggleDone = (todo)=>{
-        userCollection().set({
-            todos: todos.map(x=>{
-                if(x===todo){
-                    x.done = !x.done;
-                }
-                return x;
-            })
-        });
-    }
-    const userCollection = ()=>{
-        const db = firebase.firestore().collection('todos')
-        const id = firebase.auth().currentUser.uid
-        
-        return db.doc(id)
-    }
+    // const deleteTodo = (todo)=>{
+    //     userCollection().set({
+    //         todos: todos.filter(x=>x!==todo)
+    //     });
+    // }
+    // const toggleDone = (todo)=>{
+    //     userCollection().set({
+    //         todos: todos.map(x=>{
+    //             if(x===todo){
+    //                 x.done = !x.done;
+    //             }
+    //             return x;
+    //         })
+    //     });
+    // }
+    
     useEffect(()=>{
-        userCollection().onSnapshot(snap=>{
-            if(snap.exists){
-                const {todos} = snap.data()
-                setTodos(todos)
-            }
-        })
 
     },[])
     return (
