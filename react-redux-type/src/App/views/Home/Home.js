@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import firebase from 'firebase';
 import AddTodo from './AddTodo/AddTodo';
 import Todos from './Todos/Todos';
@@ -25,19 +25,12 @@ const Home = ({history}) => {
     //     });
     // }
     
-    useEffect(()=>{
-
-    },[])
     return (
         <main className="home">
             {/* <a class="logout">Logout</a> */}
             <h1>TodoList</h1>
-            <AddTodo userCollection={userCollection} todos={todos}/>
-            <Todos 
-                todos={todos} 
-                deleteTodo={deleteTodo} 
-                toggleDone={toggleDone}
-            />
+            <AddTodo/>
+            <Todos/>
             <p className="error"></p>
         </main>
     );
